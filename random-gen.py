@@ -13,7 +13,8 @@ def _gen_random(size):
     ret = []
     
     while getsizeof(ret) <= size:
-        ret +=(str(random.randint(-2147483648, 2147483647)) + '\n')
+        num = (str(random.randint(-2147483648, 2147483647)) + '\n')
+        ret += [num]
 
     return ret
 
@@ -27,7 +28,7 @@ def main():
     # parser.add_argument('-o', '--output-file', action='store', dest='o')
 
     # TODO: sys.argv these bad boys
-    size = 10000
+    size = 100
     filepath = 'test.txt'
 
     to_file = _gen_random(size)
@@ -36,6 +37,7 @@ def main():
     with open(filepath, 'w') as outfile:
         for line in to_file:
             lines += 1
+            print(line)
             outfile.write(str(line))
     print('File written of size %d in %d lines' % (size, lines))
 
