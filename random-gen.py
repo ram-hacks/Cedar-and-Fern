@@ -1,7 +1,7 @@
-from sys import getsizeof
-
 import random
 import string
+# import argparse
+from sys import getsizeof
 
 
 def _gen_random(size):
@@ -22,16 +22,22 @@ def main():
     """
     Do the things
     """
+    # parser = argparse.ArgumentParser()
+
+    # parser.add_argument('-o', '--output-file', action='store', dest='o')
 
     # TODO: sys.argv these bad boys
-    size = 1024
+    size = 10000
     filepath = 'test.txt'
 
     to_file = _gen_random(size)
+    lines = 0
 
     with open(filepath, 'w') as outfile:
         for line in to_file:
+            lines += 1
             outfile.write(str(line))
+    print('File written of size %d in %d lines' % (size, lines))
 
 
 if __name__ == '__main__':
