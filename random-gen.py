@@ -37,7 +37,6 @@ def main():
     with open(filepath, 'w') as outfile:
         for line in to_file:
             lines += 1
-            print(line)
             outfile.write(str(line))
     print('File written of size %d in %d lines' % (size, lines))
 
