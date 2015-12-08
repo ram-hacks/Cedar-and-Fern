@@ -1,4 +1,5 @@
-import sys
+from sys import getsizeof
+
 import random
 import string
 
@@ -11,11 +12,7 @@ def _gen_random(size):
     # Return file
     ret = []
     
-    # Each integer is 2 bytes, so we take our size (in bytes)
-    # and divide by two to find total number of ints we need
-    #num = size//2
-    num = size
-    for i in range(num):
+    while getsizeof(ret) <= size:
         ret +=(str(random.randint(-2147483648, 2147483647)) + '\n')
 
     return ret
@@ -32,7 +29,7 @@ def main():
 
     to_file = _gen_random(size)
 
-    with open(filepath, 'a') as outfile:
+    with open(filepath, 'w') as outfile:
         for line in to_file:
             outfile.write(str(line))
 
